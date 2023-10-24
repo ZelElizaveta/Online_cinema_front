@@ -1,0 +1,10 @@
+.active {
+	@apply border-r-4 border-r-transparent border-r-primary;
+	> a > span {
+		@apply text-white;
+	}
+
+	> a > svg {
+		@apply fill-primary;
+	}
+}
