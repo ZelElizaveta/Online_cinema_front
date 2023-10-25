@@ -93,7 +93,8 @@ const config: Config = {
 					borderRadius: '0.65rem',
 					transition: 'background-color .3s easy-in-out',
 					'&:hover': {
-						backgroundColor: '#ff009',
+						backgroundColor: '#ff0303',
+						transition: 'background-color .3s easy-in-out',
 					},
 				},
 				'.text-link': {
