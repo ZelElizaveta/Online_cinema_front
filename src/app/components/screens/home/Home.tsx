@@ -5,6 +5,7 @@ import { Heading } from '@/components/ui';
 import { Meta } from '@/utils/meta';
 
 import { IHome } from './Home.interface';
+import { toastr } from 'react-redux-toastr';
 
 const Home: FC<IHome> = (): JSX.Element => {
 	return (

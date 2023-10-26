@@ -1,4 +1,4 @@
-import '../styles/globals.scss';
+import '../app/assets/styles/globals.scss';
 
 import MainProvider from 'providers/MainProvider';
 
