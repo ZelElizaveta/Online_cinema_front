@@ -12,6 +12,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { IAuthInput } from './Auth.interface';
 
 import styles from './Auth.module.scss';
+import { useActions } from '@/hooks/useActions';
 
 type Type = 'login' | 'register';
 
@@ -29,12 +30,7 @@ const Auth: FC = () => {
 		mode: 'onChange',
 	});
 
-	const login = (data: any) => {
-		console.table(data);
-	};
-	const register = (data: any) => {
-		data;
-	};
+	const { login, register } = useActions();
 
 	const onSubmit: SubmitHandler<IAuthInput> = (data) => {
 		if (type === 'login') {
