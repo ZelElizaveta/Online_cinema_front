@@ -17,7 +17,7 @@ const MenuItem: FC<{ item: IMenuItems }> = ({ item }) => {
 	return (
 		<li
 			className={cn({
-				// [styles.active]: item.link === pathname,
+				[styles.active]: item.link === pathname,
 			})}
 		>
 			<Link href={item.link}>
