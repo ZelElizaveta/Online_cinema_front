@@ -40,7 +40,7 @@ instans.interceptors.response.use(
 		) {
 			originalRequest._isRetry = true;
 			try {
-				await authService.getNewtokkens();
+				await authService.getNewTokkens();
 				return instans.request(originalRequest);
 			} catch (error) {
 				if (errorCatch(error) === 'jwt expired') {
