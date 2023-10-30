@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import CountUsers from './CountUsers';
+import CountUsers from '../CountUsers';
 import PopularMovie from './PopularMovie';
 
 import styles from '../Admin.module.scss';
