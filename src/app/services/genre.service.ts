@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'api/interceptors';
 
 import { getGenresUrl } from '@/configs/api.comfig';
 
@@ -14,5 +14,9 @@ export const GenreService = {
 				  }
 				: {},
 		});
+	},
+
+	async deleteGenre(_id: string) {
+		return axios.delete<string>(getGenresUrl(`/${_id}`));
 	},
 };
