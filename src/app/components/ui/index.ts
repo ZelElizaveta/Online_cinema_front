@@ -4,6 +4,7 @@ import SkeletonLoader from './skeletonLoader/SkeletonLoader';
 import SearchField from './search-field/SearchField';
 import AdminNavigation from './admin-navigation/AdminNavigation';
 import SubHeading from './heading/SubHeading';
+import SlugField from './form-elements/slugField/SlugField';
 
 export {
 	Heading,
@@ -12,4 +13,5 @@ export {
 	SearchField,
 	AdminNavigation,
 	SubHeading,
+	SlugField,
 };
