@@ -7,7 +7,6 @@ import { movieService } from '@/services/movie.service';
 
 import { getAdminUrl } from '@/configs/url.config';
 import { toastError } from '@/utils/toast-error';
-import { getGenresList } from '@/utils/movie/getgenresList';
 
 import { ITableItem } from '@/components/ui/admin-table/AdminTable/AdminTable.interface';
 
