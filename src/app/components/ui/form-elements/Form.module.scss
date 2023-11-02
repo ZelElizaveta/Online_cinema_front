@@ -26,6 +26,7 @@
 	@apply relative;
 	.uploadFlex {
 		@apply flex;
+		justify-content: space-between;
 
 		> .uploadImageContainer {
 			@apply shrink-0 relative w-24 h-24;
@@ -50,14 +51,23 @@
 				@apply text-xs uppercase text-gray-600 block mb-4;
 			}
 
-			> input {
-				@apply block w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-primary opacity-70 file:text-white transition-opacity;
-			}
-
 			&:hover > input {
 				@apply opacity-100;
 			}
 		}
+	}
+}
+
+.label {
+	@apply flex w-full text-sm text-white mr-4 py-2 px-4 rounded-full border-0 font-semibold bg-primary opacity-70 transition-opacity;
+	cursor: pointer;
+	justify-content: center;
+	> input {
+		display: none;
+	}
+
+	&:hover {
+		@apply opacity-100;
 	}
 }
 

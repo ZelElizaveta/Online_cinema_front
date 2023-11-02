@@ -21,13 +21,6 @@ import { IActorEditInput } from './ActorEdit.interface';
 import formStyles from '@/ui/form-elements/AdminForm.module.scss';
 import UploadField from '@/components/ui/form-elements/uploadField/UploadField';
 
-const DynamicTextEditor = dynamic(
-	() => import('@/ui/form-elements/TextEditor'),
-	{
-		ssr: false,
-	}
-);
-
 const ActorEdit: FC = () => {
 	const {
 		handleSubmit,
