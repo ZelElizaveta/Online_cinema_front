@@ -1,5 +1,6 @@
 import { ChangeEvent, useMemo, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
+import { useRouter } from 'next/router';
 import { toastr } from 'react-redux-toastr';
 
 import { useDebounce } from '@/hooks/useDebounce';
@@ -13,6 +14,7 @@ import { ITableItem } from '@/components/ui/admin-table/AdminTable/AdminTable.in
 export const useGenres = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const debouncedSearch = useDebounce(searchTerm, 500);
+	const { push } = useRouter();
 
 	const queryData = useQuery(
 		['genres list', debouncedSearch],
@@ -38,6 +40,20 @@ export const useGenres = () => {
 		setSearchTerm(e.target.value);
 	};
 
+	const { mutateAsync: createAsync } = useMutation(
+		'create genre',
+		() => GenreService.createGenre(),
+		{
+			onError(error) {
+				toastError(error, 'Create genre');
+			},
+			onSuccess({ data: _id }) {
+				toastr.success('Create genre', 'create was successful');
+				push(getAdminUrl(`genre/edit/${_id}`));
+			},
+		}
+	);
+
 	const { mutateAsync: deleteAsync } = useMutation(
 		'delete genre',
 		(genreId: string) => GenreService.deleteGenre(genreId),
@@ -58,7 +74,8 @@ export const useGenres = () => {
 			...queryData,
 			searchTerm,
 			deleteAsync,
+			createAsync,
 		}),
-		[queryData, searchTerm, deleteAsync]
+		[queryData, searchTerm, deleteAsync, createAsync]
 	);
 };

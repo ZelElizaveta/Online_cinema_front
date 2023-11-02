@@ -1,6 +1,7 @@
 import { ChangeEvent, useMemo, useState } from 'react';
 import { useMutation, useQuery } from 'react-query';
 import { toastr } from 'react-redux-toastr';
+import { useRouter } from 'next/router';
 
 import { useDebounce } from '@/hooks/useDebounce';
 import { actorService } from '@/services/actor.service';
@@ -13,6 +14,7 @@ import { ITableItem } from '@/components/ui/admin-table/AdminTable/AdminTable.in
 export const useActors = () => {
 	const [searchTerm, setSearchTerm] = useState<string>('');
 	const debouncedSearch = useDebounce(searchTerm, 500);
+	const { push } = useRouter();
 
 	const queryData = useQuery(
 		['actors list', debouncedSearch],
@@ -38,9 +40,23 @@ export const useActors = () => {
 		setSearchTerm(e.target.value);
 	};
 
+	const { mutateAsync: createAsync } = useMutation(
+		'create actor',
+		() => actorService.createActor(),
+		{
+			onError(error) {
+				toastError(error, 'Create actor');
+			},
+			onSuccess({ data: _id }) {
+				toastr.success('Create actor', 'create was successful');
+				push(getAdminUrl(`actor/edit/${_id}`));
+			},
+		}
+	);
+
 	const { mutateAsync: deleteAsync } = useMutation(
 		'delete actor',
-		(actorId: string) => actorService.deleteUser(actorId),
+		(actorId: string) => actorService.deleteActor(actorId),
 		{
 			onError(error) {
 				toastError(error, 'Delete actor');
@@ -58,7 +74,8 @@ export const useActors = () => {
 			...queryData,
 			searchTerm,
 			deleteAsync,
+			createAsync,
 		}),
-		[queryData, searchTerm, deleteAsync]
+		[queryData, searchTerm, deleteAsync, createAsync]
 	);
 };

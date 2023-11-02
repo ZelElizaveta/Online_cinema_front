@@ -12,6 +12,7 @@ export const usePopularGenres = () => {
 		queryFn: () => GenreService.getAll(),
 		select: ({ data }) =>
 			data
+				.filter((genre) => genre.icon)
 				.map(
 					(genre) =>
 						({

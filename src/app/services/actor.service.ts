@@ -1,8 +1,8 @@
 import axios from 'api/interceptors';
 
 import { getActorsUrl } from '@/configs/api.comfig';
-import { IUser } from '@/shared/types/user.types';
 import { IActor } from '@/shared/types/movie.types';
+import { IActorEditInput } from '@/components/screens/admin/actor/ActorEdit.interface';
 
 export const actorService = {
 	async getAll(searchTerm?: string) {
@@ -15,7 +15,19 @@ export const actorService = {
 		});
 	},
 
-	async deleteUser(_id: string) {
+	async getById(_id: string) {
+		return axios.get<IActorEditInput>(getActorsUrl(`/${_id}`));
+	},
+
+	async createActor() {
+		return axios.post<string>(getActorsUrl(`/`));
+	},
+
+	async updateActor(_id: string, data: IActorEditInput) {
+		return axios.put<string>(getActorsUrl(`/${_id}`), data);
+	},
+
+	async deleteActor(_id: string) {
 		return axios.delete<string>(getActorsUrl(`/${_id}`));
 	},
 };
