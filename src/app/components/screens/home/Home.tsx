@@ -1,13 +1,12 @@
 import { FC } from 'react';
 
-import { Heading } from '@/components/ui';
+import { Heading, Slider } from '@/components/ui';
 
 import { Meta } from '@/utils/meta';
 
 import { IHome } from './Home.interface';
-import { toastr } from 'react-redux-toastr';
 
-const Home: FC<IHome> = (): JSX.Element => {
+const Home: FC<IHome> = ({ slides }) => {
 	return (
 		<Meta
 			title="Movies for fans"
@@ -17,6 +16,7 @@ const Home: FC<IHome> = (): JSX.Element => {
 				title="Watch movies online"
 				className="text-gray-300 mb-8 text-xl"
 			/>
+			{slides.length && <Slider slides={slides} />}
 		</Meta>
 	);
 };

@@ -134,10 +134,6 @@ const MovieEdit: FC = () => {
 										error={error}
 									/>
 								)}
-								rules={{
-									required:
-										'Please select at least one actor',
-								}}
 							/>
 
 							<Controller
