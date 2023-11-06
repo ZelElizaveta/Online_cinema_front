@@ -1,12 +1,13 @@
 import { FC } from 'react';
 
-import { Heading, Slider } from '@/components/ui';
+import { Heading, Slider, SubHeading } from '@/components/ui';
 
 import { Meta } from '@/utils/meta';
 
 import { IHome } from './Home.interface';
+import { Gallery } from '..';
 
-const Home: FC<IHome> = ({ slides }) => {
+const Home: FC<IHome> = ({ slides, actors, trendingMovies }) => {
 	return (
 		<Meta
 			title="Movies for fans"
@@ -17,6 +18,14 @@ const Home: FC<IHome> = ({ slides }) => {
 				className="text-gray-300 mb-8 text-xl"
 			/>
 			{slides.length && <Slider slides={slides} />}
+			<div className="my-10">
+				<SubHeading title="Trending now" />
+				{trendingMovies.length && <Gallery items={trendingMovies} />}
+			</div>
+			<div className="my-10">
+				<SubHeading title="Best actors" />
+				{actors.length && <Gallery items={actors} />}
+			</div>
 		</Meta>
 	);
 };

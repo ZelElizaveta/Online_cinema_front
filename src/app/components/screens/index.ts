@@ -5,6 +5,7 @@ import MovieList from './admin/movies/MovieList';
 import GenreEdit from './admin/genre/GenreEdit';
 import ActorEdit from './admin/actor/ActorEdit';
 import MovieEdit from './admin/movie/MovieEdit';
+import Gallery from '../ui/gallery/Gallery';
 export {
 	Home,
 	ActorList,
@@ -13,4 +14,5 @@ export {
 	GenreEdit,
 	ActorEdit,
 	MovieEdit,
+	Gallery,
 };
