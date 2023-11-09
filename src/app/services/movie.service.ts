@@ -4,7 +4,7 @@ import axios from 'api/interceptors';
 import { getMoviesUrl } from '@/configs/api.comfig';
 
 import { IMovieEditInput } from '@/components/screens/admin/movie/MovieEdit.interface';
-import { IMovie } from '@/shared/types/movie.types';
+import { IActor, IMovie } from '@/shared/types/movie.types';
 
 export const movieService = {
 	async getAll(searchTerm?: string) {
@@ -27,6 +27,14 @@ export const movieService = {
 
 	async getById(_id: string) {
 		return axios.get<IMovieEditInput>(getMoviesUrl(`/${_id}`));
+	},
+	async getByGenres(genreIds: string[]) {
+		return axiosClassic.post<IMovie[]>(getMoviesUrl(`/by-genres`), {
+			genreIds,
+		});
+	},
+	async getByActor(actorId: string) {
+		return axiosClassic.get<IActor[]>(getMoviesUrl(`/by-actor/${actorId}`));
 	},
 
 	async createMovie() {

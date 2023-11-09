@@ -1,4 +1,4 @@
-@import '../../../assets/styles/variables.scss';
+@import '../../../assets/styles/variables';
 
 .gallery {
 	@apply flex items-center overflow-x-auto flex-nowrap py-3;
@@ -23,7 +23,7 @@
 	}
 
 	&.horizontal {
-		@apply mb-8 h-44;
+		@apply mb-8 h-44 mr-5;
 		width: 31%;
 	}
 

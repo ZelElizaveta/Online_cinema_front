@@ -6,6 +6,7 @@ import AdminNavigation from './admin-navigation/AdminNavigation';
 import SubHeading from './heading/SubHeading';
 import SlugField from './form-elements/slugField/SlugField';
 import Slider from './slider/Slider';
+import Catalog from './catalog-movies/Catalog';
 
 export {
 	Heading,
@@ -16,4 +17,5 @@ export {
 	SubHeading,
 	SlugField,
 	Slider,
+	Catalog,
 };
